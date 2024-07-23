@@ -183,11 +183,16 @@
                                 aria-expanded="false">
                                 Xin chào,
                                 <?= $_SESSION['user']['HoTen'] ?>
+
                             </a>
+
                             <ul class="dropdown-menu end-0" style="left:auto">
+                            <?php if (isset($_SESSION['user']) && user_hasOrder($_SESSION['user']['MaTK'])): ?>
+                                <li><a class="dropdown-item" href="index.php?mod=order&act=pay">Thanh toán</a></li>
+                            <?php endif; ?>
 
                                 <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-                                <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                <li><a class="dropdown-item" href="index.php?mod=order&act=order_detail">Lịch sử mua hàng</a></li>
 
                                 <!-- Ở đây xử dụng 1 điều kiện khi mà $_SESSION['user]['quyen']
                             khi mà quyền của tài khoản đăng nhập = 1 tức = admin (database) thì sẽ hiện lên trang quản lý để chúng ta vào trang admin-->

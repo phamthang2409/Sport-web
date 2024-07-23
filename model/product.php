@@ -4,6 +4,11 @@
     function get_Product(){
         return pdo_query("SELECT * FROM sanpham");
     }
+    
+    function get_ProductHot(){
+        return pdo_query("SELECT * FROM sanpham WHERE hot = 1");
+    }
+
 
     function product_GetById($id){ //lay san pham theo ma sp (id)
         return pdo_query_one("SELECT * FROM sanpham sp INNER JOIN danhmuc dm ON sp.MaDM = dm.MaDM 
@@ -15,10 +20,10 @@
     }
     
     function product_decreaseAmout($MaSP){
-        pdo_execute("UPDATE sanpham SET SoLuong = SoLuong - 1 WHERE MaSP = ?",$MaSP);
+        pdo_execute("UPDATE sanpham SET SoLuong = SoLuong - 10 WHERE MaSP = ?",$MaSP);
     }
     function product_increaseAmout($MaSP){
-        pdo_execute("UPDATE sanpham SET SoLuong = SoLuong +1 WHERE MaSP = ?",$MaSP);
+        pdo_execute("UPDATE sanpham SET SoLuong = SoLuong + 1 WHERE MaSP = ?",$MaSP);
     }
     function product_count(){
         return pdo_query_value("SELECT COUNT(*) soluong FROM sanpham");

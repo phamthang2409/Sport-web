@@ -8,7 +8,6 @@
             <th class="text-start">Tên Sản phẩm</th>
             <th class="text-start">Giá</th>
             <th>Số lượng</th>
-            <th>Lượt xem</th>
             <th class="text-end">Hành động</th>
         </tr>
     </thead>
@@ -26,13 +25,10 @@
                     <?=$QLSP['TenSP']?>
                 </td>
                 <td class="text-start">
-                    <?=$QLSP['Gia']?>
+                    <?=number_format($QLSP['Gia'],0, ".", ",")?>VNĐ
                 </td>
                 <td>
                     <?= $QLSP['SoLuong'] ?>
-                </td>
-                <td>
-                    <?= $QLSP['LuotXem'] ?>
                 </td>
                 <td class="text-end">
                     <a href="index.php?mod=admin&act=update-product&id=<?=$QLSP['MaSP']?>" class="btn btn-warning">Sửa</a>

@@ -244,6 +244,17 @@ if(isset($_GET['act'])) {
             delete_category($_GET['id']);
             header('Location: index.php?mod=admin&act=admin-category');
             break;
+        
+        case 'admin-order' :
+            include_once 'model/order.php';
+
+            $adminOrder = get_allOrder();
+
+            include_once 'view/template_admin_header.php';
+            include_once 'view/admin_order.php';
+            include_once 'view/template_admin_footer.php';
+
+            break;
         default:
             # code...
             break;

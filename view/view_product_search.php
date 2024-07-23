@@ -4,7 +4,7 @@
 <?php foreach ($kqSearch as $sanpham): ?>
         <div class="col-sm-3 mb-3" >
             <div class="card">
-                <img src="upload/product/<?= $sanpham['HinhAnh'] ?>" class="card-img-top" alt="..." style="height: 250px;" >
+                <img src="upload/product/<?= $sanpham['HinhAnh'] ?>" class="card-img-top" alt="..." >
                 <div class="card-body">
                     <h5 class="card-title">
                         <?= $sanpham['TenSP'] ?>

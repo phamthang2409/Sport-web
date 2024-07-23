@@ -28,7 +28,7 @@
             </td>
             <td class="text-start"><?=$item['TenSP']?></td>
             <td>
-                1
+                <?=$item['SoLuongSP']?>
             </td>
             <td class="text-end"><?=number_format($item['Gia'],0, ".", ",")?>VNĐ</td>
             <td class="text-end"></td>
@@ -49,17 +49,6 @@
     </tfoot>
 </table>
 
-<!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="HinhThucThanhToan" id="HinhThucThanhToan" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="btnradio1">Thanh toán bằng tiền mặt</label>
-
-  <input type="radio" class="btn-check" name="HinhThucThanhToan" id="HinhThucThanhToan" autocomplete="off">
-  <label class="btn btn-outline-primary" for="btnradio2">MOMO</label>
-
-  <input type="radio" class="btn-check" name="HinhThucThanhToan" id="HinhThucThanhToan" autocomplete="off">
-  <label class="btn btn-outline-primary" for="btnradio3">VNPAY</label>
-</div>
--->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -86,24 +75,33 @@
 </div>
 </form>
 </div>
+
 <script>
     function formatCurrency(number) {
         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);
     }
+
     function tinhThanhTien() {
         var dsSP = document.querySelectorAll('table tbody tr');
-        var soLuong = 1;
         var thanhTien = 0;
-        for (const sanpham of dsSP) {
+
+        dsSP.forEach(function (sanpham) {
             var gia = Number(sanpham.querySelector('td:nth-child(4)').innerText.replace('VNĐ', '').replace(',', ''));
+            var soLuong = Number(sanpham.querySelector('td:nth-child(3)').innerText);
+
             var tien = gia * soLuong;
             sanpham.querySelector('td:nth-child(5)').innerText = formatCurrency(tien);
 
-            thanhTien = thanhTien + tien;
-        }
+            thanhTien += tien;
+        });
+
         document.querySelector('tfoot th:nth-child(2)').innerText = formatCurrency(thanhTien);
-        document.querySelector('#SoLuong').value = dsSP.length;
         document.querySelector('#ThanhTien').value = thanhTien;
+
+        // Đặt giá trị cho input SoLuong
+        document.querySelector('#SoLuong').value = dsSP.length;
     }
+
     tinhThanhTien();
 </script>
+

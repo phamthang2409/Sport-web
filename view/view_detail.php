@@ -20,9 +20,14 @@
         </div>
         <small>Còn:<strong> <?=$chiTietSP['SoLuong']?> </strong> Sản phẩm trong kho hàng</small>
         <br>
-        <a href="index.php?mod=product&act=addToCart&id=<?=$chiTietSP['MaSP']?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
 
-
+        <form action="index.php?mod=product&act=addToCart" method="POST">
+            <input type="hidden" name="MaSP" value="<?=$chiTietSP['MaSP']?>">
+            <label for="SoLuong">Số lượng:</label>
+            <input type="number" name="SoLuong" value="1" min="1">
+            <button type="submit" class="btn btn-primary mt-2">Thêm vào giỏ hàng</button>
+        </form>
+        
         <?php if (isset($_SESSION['thongbao'])): ?>
             <div class="alert alert-success mt-2" role="alexrt">
                 <?=$_SESSION['thongbao']?>

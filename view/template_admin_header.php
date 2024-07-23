@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -26,12 +26,15 @@
                             khoản</a>
                         <a href="index.php?mod=admin&act=admin-product"
                             class="list-group-item list-group-item-action ">Sản phẩm</a>
+                         <a href="index.php?mod=admin&act=admin-order"
+                            class="list-group-item list-group-item-action">Hóa đơn</a>    
                         <a href="index.php?mod=admin&act=admin-comment"
                             class="list-group-item list-group-item-action ">Bình luận</a>
                         <a href="index.php?mod=admin&act=admin-category"
                             class="list-group-item list-group-item-action">Danh mục</a>
-                        <a class="list-group-item list-group-item-action"
-                            aria-disabled="true">Hóa đơn</a>
+                       
+                        <a href="index.php?mod=admin&act=admin-order"
+                            class="list-group-item list-group-item-action">Thống kê</a>
                     </div>
                 </div>
                 <div class="col-md p-0">

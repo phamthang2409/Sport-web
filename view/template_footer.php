@@ -55,11 +55,11 @@
     </div>
     <div class="footer-down text-white">
         <p>
-            © 2007 - 2023 Công Ty Cổ Phần Bán Lẻ SPORTVN / Địa chỉ: 1111 Quang Trung, Quận 12, Phường ... TPHCM
-            / GPĐKKD số 0311609355 do Sở KHĐT TP.HCM cấp ngày 08/03/2012.
-            GP số 47/GP-TTĐT do sở TTTT TP HCM cấp ngày 02/07/2018.</p>
+            © 2007 - 2023 Công Ty Cổ Phần Bán Lẻ SPORTVN / Địa chỉ: D2, Quận Bình Thạnh, Phường ... TPHCM
+            / GPĐKKD số 0311609355 do Sở KHĐT TP.HCM cấp ngày 08/03/2018.
+            GP số 47/GP-TTĐT do sở TTTT TP HCM cấp ngày 02/07/2024.</p>
         Điện Thoại <a href="">(028) 7302 3456</a>
-        Email:<a href="">sportvn@sportgmail.com.vn</a> . Chịu trách nhiệm nội dung: Nguyễn Long Vũ.
+        Email:<a href="">sportvn@sportgmail.com.vn</a>
     </div>
 </footer>
 

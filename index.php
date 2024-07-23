@@ -5,6 +5,15 @@
     include_once 'model/category.php';
     
     $dsCategory = get_AllCategory();
+// Kiểm tra xem $_SESSION['user'] có tồn tại và có dữ liệu không
+if (isset($_SESSION['user']) && isset($_SESSION['user']['MaTK'])) {
+
+    $MaTK = $_SESSION['user']['MaTK'];
+    include_once 'model/order.php';
+    $userHasOrder = user_hasOrder($MaTK);
+
+}
+
     
     //dieu huong den cac controller
     if(isset($_GET['mod'])){
@@ -23,6 +32,10 @@
 
             case 'category' : //danh muc
                 include_once 'controller/category.php';
+                break;
+
+            case 'order' : //đơn hàng, thanh toán
+                include_once 'controller/order.php';
                 break;  
 
             case 'admin' : //quan ly cac san pham, user, ....

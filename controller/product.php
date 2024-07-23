@@ -46,42 +46,39 @@ if (isset($_GET['act'])) {
                 include_once 'view/template_footer.php';
 
                 break;
-        
+    
             case 'addToCart' :
-                
                 include_once 'model/shoppingcart.php';
-
-                if( !isset($_SESSION['user']) ){
+            
+                if (!isset($_SESSION['user'])) {
                     $_SESSION['loi'] = 'Bạn cần đăng nhập để có thể mua hàng';
                     header('Location: index.php?mod=user&act=login');
                     return;
                 }
-
-                $MaSP = $_GET['id'];
+            
+                $MaSP = $_POST['MaSP'];  // Lấy MaSP từ form
+                $SoLuongSP = $_POST['SoLuong'];  // Lấy số lượng từ form
                 $MaTK = $_SESSION['user']['MaTK'];
                 $kq = user_hasCart($MaTK);
-                
+
+            
                 try {
-                    if( $kq ){
-                        //đúng , đã có giỏ hàng, thêm sản phẩm
-                        shopping_addToCart($kq['MaHoaDon'],$MaSP);
-
-                    }else{ //Sai, chưa có giỏ hàng, thêm giỏ hàng và sau đó thêm sản phẩm
-                        
+                    if ($kq) {
+                        // Đúng, đã có giỏ hàng, thêm sản phẩm
+                        shopping_addToCart($kq['MaHoaDon'], $MaSP, $SoLuongSP);
+                    } else {
+                        // Sai, chưa có giỏ hàng, thêm giỏ hàng và sau đó thêm sản phẩm
                         shoppingcart_add($MaTK);
-
                         $kq = user_hasCart($MaTK);
-                        
-                        shopping_addToCart($kq['MaHoaDon'],$MaSP);
+                        shopping_addToCart($kq['MaHoaDon'], $MaSP, $SoLuongSP);
                     }
                     $_SESSION['thongbao'] = 'Đã thêm sản phẩm vào giỏ hàng';
-
                 } catch (\Throwable $th) {
                     $_SESSION['loi'] = "Sản phẩm này đã có trong giỏ hàng";
                     unset($_SESSION['thongbao']);
                 }
-                
-                header('Location: index.php?mod=product&act=detail&id='.$MaSP);
+            
+                header('Location: index.php?mod=product&act=detail&id=' . $MaSP);
                 break;
 
             case 'removeFromCart' :
@@ -115,14 +112,17 @@ if (isset($_GET['act'])) {
                 include_once 'model/shoppingcart.php';
                 $MaTK = $_SESSION['user']['MaTK'];
                 $kq = user_hasCart($MaTK);
+
                 if($kq){
 
-                    $SoLuong = $_POST['SoLuong'];
+                    $SoLuong = $_POST['SoLuong'] + 9 ;
+                    var_dump($SoLuong);
                     $ThanhTien = $_POST['ThanhTien'];
                     $TrangThai = 'chuan-bi';
 
                     include_once 'model/product.php';
                     $ctGioHang = shopping_getCart($MaTK);
+
                     foreach ($ctGioHang as $sanpham) {
                         product_decreaseAmout($sanpham['MaSP']);
                     }
@@ -131,7 +131,7 @@ if (isset($_GET['act'])) {
                     $_SESSION['thongbao'] = "Đã tiếp nhận đơn hàng của bạn";
                 }
                 header('Location: index.php?mod=page&act=cart');
-            
+                break;
             
             case 'comment' :
                 include_once 'model/comment.php';
